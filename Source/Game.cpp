@@ -10,8 +10,7 @@ void Game::Init() {
 
 void Game::MainLoop()
 {
-    
-    if (cur_mode == INIT) {
+    if (cur_mode == NOT_PLAYING) {
         //Waiting for Input...
         std::string input;
 
@@ -58,7 +57,6 @@ void Game::MainLoop()
             this->turn = Enemy(this->turn);
         }
     }
-
 }
 
 void Game::PrintCmd()
@@ -89,13 +87,13 @@ void Game::SetCmd()
 
 void Game::ExitCmd()
 {
-    if (cur_mode == INIT) {
+    if (cur_mode == NOT_PLAYING) {
         std::cout << "Exiting this program..." << std::endl;
         this->running = false;
     }
     else if (cur_mode == PLAYING) {
         std::cout << "Game stopped" << std::endl;
-        cur_mode = INIT;
+        cur_mode = NOT_PLAYING;
     }
 }
 
@@ -132,7 +130,6 @@ void Game::PlayCmd()
     
     std::cout << "Player: " << this->player << std::endl;
     std::cout << "AI: " << Enemy(this->player) << std::endl;
-
 }
 
 void Game::PlaceCmd(int pos)
@@ -145,7 +142,6 @@ void Game::PlaceCmd(int pos)
     }
     else std::cout << "Already occupied" << std::endl;
 }
-
 
 char Game::WinCheck()
 {

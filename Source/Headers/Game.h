@@ -1,8 +1,8 @@
 #pragma once
 #include <array>
 
-enum Mode {
-	INIT,
+enum State {
+	NOT_PLAYING,
 	PLAYING
 };
 
@@ -15,7 +15,7 @@ private:
 	char player = '\0';
 	char turn = 'O';
 
-	Mode cur_mode = INIT;
+	State cur_mode = NOT_PLAYING;
 
 	void PrintCmd();
 	void SetCmd();
